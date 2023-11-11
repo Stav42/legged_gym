@@ -4,15 +4,7 @@
      For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
 <robot
   name="svan_urdf_package">
-  <!-- <link name="world" />
-  <joint name="world_joint" type="fixed">
-      <origin xyz="0 0 0.5" />
-      <parent link="world" />
-      <child link="base_link" />
-      <limit lower="0" upper="0" effort="1000" velocity="0" />
-  </joint> -->
-  <link
-    name="base_link">
+  <link name="base_link">
     <inertial>
       <origin
         xyz="-0.000736126189085237 -1.72251877519347E-05 9.8768329506848E-05"
@@ -51,8 +43,7 @@
       </geometry>
     </collision>
   </link>
-  <link
-    name="fr_abd_l">
+  <link name="fr_abd_l">
     <inertial>
       <origin
         xyz="0.0431354666865266 -0.0619037967425595 -1.28783333823018E-05"
@@ -91,9 +82,7 @@
       </geometry>
     </collision>
   </link>
-  <joint
-    name="fr_abd_j"
-    type="revolute">
+  <joint name="fr_abd_j" type="revolute">
     <origin
       xyz="0.20368 -0.06 0"
       rpy="0 0 0" />
@@ -109,8 +98,7 @@
       effort="100"
       velocity="100" />
   </joint>
-  <link
-    name="fr_hip_l">
+  <link name="fr_hip_l">
     <inertial>
       <origin
         xyz="0.00165916788705489 0.00999999412640479 -0.0713157899491978"
@@ -149,9 +137,7 @@
       </geometry>
     </collision>
   </link>
-  <joint
-    name="fr_hip_j"
-    type="revolute">
+  <joint name="fr_hip_j" type="revolute">
     <origin
       xyz="0.043 -0.07525 0"
       rpy="0 0 0" />
@@ -167,8 +153,7 @@
       effort="100"
       velocity="100" />
   </joint>
-  <link
-    name="fr_knee_l">
+  <link name="fr_knee_l">
     <inertial>
       <origin
         xyz="0.00288556341815482 1.5445513158463E-06 -0.0756253134355262"
@@ -207,9 +192,7 @@
       </geometry>
     </collision>
   </link>
-  <joint
-    name="fr_knee_j"
-    type="revolute">
+  <joint name="fr_knee_j" type="revolute">
     <origin
       xyz="0.0041389 0.01 -0.16494"
       rpy="0 0 0" />
@@ -225,49 +208,7 @@
       effort="100"
       velocity="100" />
   </joint>
-  <!-- <link
-    name="fr_dummy_l">
-    <inertial>
-      <origin
-        xyz="0.00149999142621271 3.05311331771918E-15 5.0716157441455E-06"
-        rpy="0 0 0" />
-      <mass
-        value="9.42477796076937E-06" />
-      <inertia
-        ixx="4.71244285092067E-12"
-        ixy="-3.43878520170761E-27"
-        ixz="-1.59328596951608E-14"
-        iyy="9.42477796076933E-12"
-        iyz="-2.01948391735052E-28"
-        izz="9.42472409023335E-12" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="../meshes/fr_dummy_l.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="../meshes/fr_dummy_l.STL" />
-      </geometry>
-    </collision>
-  </link> -->
-  <joint
-    name="fr_dummy_j"
-    type="fixed" dont_collapse="true">
+  <joint name="fr_dummy_j" type="fixed" >
     <origin
       xyz="-0.026457 0 -0.16693"
       rpy="0 0 0" />
@@ -276,8 +217,7 @@
     <child
       link="foot_FR" />
   </joint>
-  <link
-    name="fl_abd_l">
+  <link name="fl_abd_l">
     <inertial>
       <origin
         xyz="0.0431354666865253 0.0619037967425567 1.28783333771046E-05"
@@ -316,9 +256,7 @@
       </geometry>
     </collision>
   </link>
-  <joint
-    name="fl_abd_j"
-    type="revolute">
+  <joint name="fl_abd_j" type="revolute">
     <origin
       xyz="0.20368 0.06 0"
       rpy="0 0 0" />
@@ -334,8 +272,7 @@
       effort="100"
       velocity="100" />
   </joint>
-  <link
-    name="fl_hip_l">
+  <link name="fl_hip_l">
     <inertial>
       <origin
         xyz="0.0016591678870552 -0.0100000058735955 -0.0713157899491955"
@@ -374,9 +311,7 @@
       </geometry>
     </collision>
   </link>
-  <joint
-    name="fl_hip_j"
-    type="revolute">
+  <joint name="fl_hip_j" type="revolute">
     <origin
       xyz="0.043 0.07525 0"
       rpy="0 0 0" />
@@ -392,8 +327,7 @@
       effort="100"
       velocity="100" />
   </joint>
-  <link
-    name="fl_knee_a">
+  <link name="fl_knee_a">
     <inertial>
       <origin
         xyz="0.00288556341815421 1.54455131551323E-06 -0.0756253134355257"
@@ -432,9 +366,7 @@
       </geometry>
     </collision>
   </link>
-  <joint
-    name="fl_knee_j"
-    type="revolute">
+  <joint name="fl_knee_j" type="revolute">
     <origin
       xyz="0.0041389 -0.01 -0.16494"
       rpy="0 0 0" />
@@ -450,49 +382,7 @@
       effort="100"
       velocity="100" />
   </joint>
-  <!-- <link
-    name="fl_dummy_l">
-    <inertial>
-      <origin
-        xyz="0.0014999914262166 2.55351295663786E-15 5.07161574681003E-06"
-        rpy="0 0 0" />
-      <mass
-        value="9.42477796076937E-06" />
-      <inertia
-        ixx="4.71244285092067E-12"
-        ixy="-1.7027390075873E-27"
-        ixz="-1.59328596951634E-14"
-        iyy="9.42477796076932E-12"
-        iyz="-4.41762106934845E-29"
-        izz="9.42472409023335E-12" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="../meshes/fl_dummy_l.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="../meshes/fl_dummy_l.STL" />
-      </geometry>
-    </collision>
-  </link> -->
-  <joint
-    name="fl_dummy_j"
-    type="fixed" dont_collapse="true">
+  <joint name="fl_dummy_j" type="fixed" >
     <origin
       xyz="-0.026618 0 -0.16693"
       rpy="0 0 0" />
@@ -501,8 +391,7 @@
     <child
       link="foot_FL" />
   </joint>
-  <link
-    name="rr_abd_l">
+  <link name="rr_abd_l">
     <inertial>
       <origin
         xyz="-0.0408339071979818 -0.0619037967425603 0.000179250427446827"
@@ -541,9 +430,7 @@
       </geometry>
     </collision>
   </link>
-  <joint
-    name="rr_abd_j"
-    type="revolute">
+  <joint name="rr_abd_j" type="revolute">
     <origin
       xyz="-0.20482 -0.06 0"
       rpy="0 0 0" />
@@ -559,8 +446,7 @@
       effort="100"
       velocity="100" />
   </joint>
-  <link
-    name="rr_hip_l">
+  <link name="rr_hip_l">
     <inertial>
       <origin
         xyz="-0.00165916788705478 0.0100000058735978 -0.0713157899491982"
@@ -599,9 +485,7 @@
       </geometry>
     </collision>
   </link>
-  <joint
-    name="rr_hip_j"
-    type="revolute">
+  <joint name="rr_hip_j" type="revolute">
     <origin
       xyz="-0.043 -0.07525 0"
       rpy="0 0 0" />
@@ -617,8 +501,7 @@
       effort="100"
       velocity="100" />
   </joint>
-  <link
-    name="rr_knee_l">
+  <link name="rr_knee_l">
     <inertial>
       <origin
         xyz="0.00654595759568111 1.5446183047052E-06 -0.0753966327483542"
@@ -657,9 +540,7 @@
       </geometry>
     </collision>
   </link>
-  <joint
-    name="rr_knee_j"
-    type="revolute">
+  <joint name="rr_knee_j" type="revolute">
     <origin
       xyz="-0.0038618 0.01 -0.16493"
       rpy="0 0 0" />
@@ -715,9 +596,7 @@
       </geometry>
     </collision>
   </link> -->
-  <joint
-    name="rr_dummy_j"
-    type="fixed" dont_collapse="true">
+  <joint name="rr_dummy_j" type="fixed" >
     <origin
       xyz="-0.018339 0 -0.16802"
       rpy="0 0 0" />
@@ -726,8 +605,7 @@
     <child
       link="foot_RR" />
   </joint>
-  <link
-    name="rl_abd_l">
+  <link name="rl_abd_l">
     <inertial>
       <origin
         xyz="-0.0408339071979842 0.0619037967425569 -0.000179250427450348"
@@ -766,9 +644,7 @@
       </geometry>
     </collision>
   </link>
-  <joint
-    name="rl_abd_j"
-    type="revolute">
+  <joint name="rl_abd_j" type="revolute">
     <origin
       xyz="-0.20482 0.06 0"
       rpy="0 0 0" />
@@ -784,8 +660,7 @@
       effort="100"
       velocity="100" />
   </joint>
-  <link
-    name="rl_hip_l">
+  <link name="rl_hip_l">
     <inertial>
       <origin
         xyz="-0.00179950691259256 -0.0100000058735954 -0.0713123896470731"
@@ -824,9 +699,7 @@
       </geometry>
     </collision>
   </link>
-  <joint
-    name="rl_hip_j"
-    type="revolute">
+  <joint name="rl_hip_j" type="revolute">
     <origin
       xyz="-0.043 0.07525 0"
       rpy="0 0 0" />
@@ -842,8 +715,7 @@
       effort="100"
       velocity="100" />
   </joint>
-  <link
-    name="rl_knee_l">
+  <link name="rl_knee_l">
     <inertial>
       <origin
         xyz="0.00654594639576345 1.54461741741496E-06 -0.0753966803284335"
@@ -882,9 +754,7 @@
       </geometry>
     </collision>
   </link>
-  <joint
-    name="rl_knee_j"
-    type="revolute">
+  <joint name="rl_knee_j" type="revolute">
     <origin
       xyz="-0.0038618 -0.01 -0.16493"
       rpy="0 0 0" />
@@ -1020,9 +890,7 @@
         </geometry>
       </collision>
   </link>
-  <joint
-    name="rl_dummy_j"
-    type="fixed" dont_collapse="true">
+  <joint name="rl_dummy_j" type="fixed" >
     <origin
       xyz="-0.0185 0 -0.16802"
       rpy="0 0 0" />
@@ -1031,51 +899,4 @@
     <child
       link="foot_RL" />
   </joint>
-   <gazebo>
-        <plugin name="joint_state_sensor" filename="libjoint_state_sensor.so"/>
-    </gazebo>
-    <gazebo>
-        <plugin name="base_state_sensor" filename="libbase_state_sensor.so"/>
-    </gazebo>
-    <!-- <gazebo>
-        <plugin name="contact_plugin" filename="libcontact_plugin_new.so">
-          <link1>foot_FR</link1>
-          <link2>foot_FL</link2>
-          <link3>foot_RL</link3>
-          <link4>foot_RR</link4>
-          <contact_model>0</contact_model>
-        </plugin>
-    </gazebo> -->
-    <gazebo>
-        <plugin name="motor_controller" filename="libmotor_controller.so">
-          <kp0>400</kp0>
-          <!-- <kp0>4</kp0> -->
-          <!-- <kp1>90.84</kp1> -->
-          <kp1>90.2</kp1>
-          <kp2>12.415</kp2>
-          <!-- <kp1>4</kp1>
-          <kp2>4</kp2> -->
-          <!-- <kp2>28.65</kp2> -->
-          <kd0>1</kd0>
-          <!-- <kd1>2</kd1> -->
-          <kd1>1.5</kd1>
-          <kd2>0.50</kd2>
-          <!-- <kd1>0.1</kd1>
-          <kd2>0.1</kd2> -->
-          <!-- <kd2>1.50</kd2> -->
-        </plugin>
-    </gazebo>
-    <gazebo>
-        <plugin name="imu_sensor" filename="libgazebo_ros_imu.so">
-            <alwaysOn>true</alwaysOn>
-            <bodyName>base_link</bodyName>
-            <frameName>base_link</frameName>
-            <topicName>/shvan/imu</topicName>
-            <serviceName>imu_service</serviceName>
-            <xyzOffset> 0 0 0 </xyzOffset>
-            <rpyOffset> 0 0 0 </rpyOffset>
-            <gaussianNoise>0.01</gaussianNoise>
-            <updateRate>100.0</updateRate>
-        </plugin>
-    </gazebo>
 </robot>

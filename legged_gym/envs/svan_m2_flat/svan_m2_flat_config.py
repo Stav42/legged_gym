@@ -32,22 +32,22 @@ from legged_gym.envs.base.legged_robot_config import LeggedRobotCfg, LeggedRobot
 
 class SvanM2FlatCfg( LeggedRobotCfg ):
     class init_state( LeggedRobotCfg.init_state ):
-        pos = [0.0, 0.0, 0.42] # x,y,z [m]
+        pos = [0.0, 0.0, 0.6] # x,y,z [m]
         default_joint_angles = { # = target angles [rad] when action = 0.0
             'fr_abd_j': 0.1,   # [rad]
             'fl_abd_j': 0.1,   # [rad]
             'rr_abd_j': -0.1 ,  # [rad]
             'rl_abd_j': -0.1,   # [rad]
 
-            'fr_hip_j': 0.8,     # [rad]
-            'fl_hip_j': 1.,   # [rad]
-            'rr_hip_j': 0.8,     # [rad]
-            'rl_hip_j': 1.,   # [rad]
-
-            'fr_knee_j': -1.5,   # [rad]
-            'fl_knee_j': -1.5,    # [rad]
-            'rr_knee_j': -1.5,  # [rad]
-            'rl_knee_j': -1.5,    # [rad]            
+            'fr_hip_j':  0.8,   # [rad]
+            'fl_hip_j':  1., # [rad]
+            'rr_hip_j':  0.8,   # [rad]
+            'rl_hip_j':  1., # [rad]
+                        
+            'fr_knee_j':-1.5,  # [rad]
+            'fl_knee_j':-1.5,   # [rad]
+            'rr_knee_j':-1.5, # [rad]
+            'rl_knee_j':-1.5,   # [rad]            
         }
     
     class terrain( LeggedRobotCfg.terrain ):
@@ -57,8 +57,14 @@ class SvanM2FlatCfg( LeggedRobotCfg ):
     class control( LeggedRobotCfg.control ):
         # PD Drive parameters:
         control_type = 'P'
-        stiffness = {'joint': 20.}  # [N*m/rad]
-        damping = {'joint': 0.5}     # [N*m*s/rad]
+        # stiffness = {'fr_abd_j': 400, 'fr_hip_j': 90, 'fr_knee_j': 12.415, 'fl_abd_j': 400, 'fl_hip_j': 90, 'fl_knee_j': 12.415,
+        #             'rr_abd_j': 400, 'rr_hip_j': 90, 'rr_knee_j': 12.415, 'rl_abd_j': 400, 'rl_hip_j': 90, 'rl_knee_j': 12.415,
+        # }  # [N*m/rad]
+        # damping = {'fr_abd_j': 1, 'fr_hip_j': 1.5, 'fr_knee_j': 0.5, 'fl_abd_j': 1, 'fl_hip_j': 1.5, 'fl_knee_j': 0.5,
+        #             'rr_abd_j': 1, 'rr_hip_j': 1.5, 'rr_knee_j': 0.5, 'rl_abd_j': 1, 'rl_hip_j': 1.5, 'rl_knee_j': 0.5,
+        # }     # [N*m*s/rad]
+
+        
         # action scale: target angle = actionScale * action + defaultAngle
         action_scale = 0.25
         # decimation: Number of control action updates @ sim DT per policy DT

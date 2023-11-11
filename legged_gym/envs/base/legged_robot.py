@@ -535,8 +535,8 @@ class LeggedRobot(BaseTask):
                     self.d_gains[i] = self.cfg.control.damping[dof_name]
                     found = True
             if not found:
-                self.p_gains[i] = 0.
-                self.d_gains[i] = 0.
+                self.p_gains[i] = 20
+                self.d_gains[i] = 0.5
                 if self.cfg.control.control_type in ["P", "V"]:
                     print(f"PD gain of joint {name} were not defined, setting them to zero")
         self.default_dof_pos = self.default_dof_pos.unsqueeze(0)
