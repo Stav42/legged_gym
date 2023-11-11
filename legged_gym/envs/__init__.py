@@ -38,7 +38,8 @@ from .anymal_b.anymal_b_config import AnymalBRoughCfg, AnymalBRoughCfgPPO
 from .cassie.cassie import Cassie
 from .cassie.cassie_config import CassieRoughCfg, CassieRoughCfgPPO
 from .a1.a1_config import A1RoughCfg, A1RoughCfgPPO
-
+from .svan_m2_rough.svan_m2_rough_config import SvanM2RoughCfg, SvanM2RoughCfgPPO
+from .svan_m2_flat.svan_m2_flat_config import SvanM2FlatCfg, SvanM2FlatCfgPPO
 
 import os
 
@@ -49,3 +50,6 @@ task_registry.register( "anymal_c_flat", Anymal, AnymalCFlatCfg(), AnymalCFlatCf
 task_registry.register( "anymal_b", Anymal, AnymalBRoughCfg(), AnymalBRoughCfgPPO() )
 task_registry.register( "a1", LeggedRobot, A1RoughCfg(), A1RoughCfgPPO() )
 task_registry.register( "cassie", Cassie, CassieRoughCfg(), CassieRoughCfgPPO() )
+task_registry.register( "svan_m2_rough", LeggedRobot, SvanM2RoughCfg(), SvanM2RoughCfgPPO() )
+task_registry.register( "svan_m2_flat", LeggedRobot, SvanM2FlatCfg(), SvanM2FlatCfgPPO() )
+

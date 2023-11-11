@@ -648,8 +648,14 @@ class LeggedRobot(BaseTask):
         # save body names from the asset
         body_names = self.gym.get_asset_rigid_body_names(robot_asset)
         self.dof_names = self.gym.get_asset_dof_names(robot_asset)
+        # self.dof_names.remove('fl_dummy_j')
+        # self.dof_names.remove('fr_dummy_j')
+        # self.dof_names.remove('rl_dummy_j')
+        # self.dof_names.remove('rr_dummy_j')
         self.num_bodies = len(body_names)
         self.num_dofs = len(self.dof_names)
+        print("DOF Names: ", self.dof_names, "\n")
+        
         feet_names = [s for s in body_names if self.cfg.asset.foot_name in s]
         penalized_contact_names = []
         for name in self.cfg.asset.penalize_contacts_on:
