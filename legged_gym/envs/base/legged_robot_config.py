@@ -33,7 +33,7 @@ from .base_config import BaseConfig
 class LeggedRobotCfg(BaseConfig):
     class env:
         num_envs = 4096
-        num_observations = 235
+        num_observations = 48 
         num_privileged_obs = None # if not None a priviledge_obs_buf will be returned by step() (critic obs for assymetric training). None is returned otherwise 
         num_actions = 12
         env_spacing = 3.  # not used with heightfields/trimeshes 
@@ -105,7 +105,7 @@ class LeggedRobotCfg(BaseConfig):
         disable_gravity = False
         collapse_fixed_joints = True # merge bodies connected by fixed joints. Specific fixed joints can be kept by adding " <... dont_collapse="true">
         fix_base_link = False # fixe the base of the robot
-        default_dof_drive_mode = 1 # see GymDofDriveModeFlags (0 is none, 1 is pos tgt, 2 is vel tgt, 3 effort)
+        default_dof_drive_mode = 3 # see GymDofDriveModeFlags (0 is none, 1 is pos tgt, 2 is vel tgt, 3 effort)
         self_collisions = 0 # 1 to disable, 0 to enable...bitwise filter
         replace_cylinder_with_capsule = True # replace collision cylinders with capsules, leads to faster/more stable simulation
         flip_visual_attachments = True # Some .obj meshes must be flipped from y-up to z-up

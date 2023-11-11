@@ -50,6 +50,10 @@ class A1RoughCfg( LeggedRobotCfg ):
             'RR_calf_joint': -1.5,    # [rad]
         }
 
+    class terrain( LeggedRobotCfg.terrain):
+        mesh_type = "plane"
+        measure_heights = False
+
     class control( LeggedRobotCfg.control ):
         # PD Drive parameters:
         control_type = 'P'
@@ -63,10 +67,11 @@ class A1RoughCfg( LeggedRobotCfg ):
     class asset( LeggedRobotCfg.asset ):
         file = '{LEGGED_GYM_ROOT_DIR}/resources/robots/a1/urdf/a1.urdf'
         name = "a1"
+        # fix_base_link = True 
         foot_name = "foot"
         penalize_contacts_on = ["thigh", "calf"]
         terminate_after_contacts_on = ["base"]
-        self_collisions = 1 # 1 to disable, 0 to enable...bitwise filter
+        self_collisions = 0 # 1 to disable, 0 to enable...bitwise filter
   
     class rewards( LeggedRobotCfg.rewards ):
         soft_dof_pos_limit = 0.9

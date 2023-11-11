@@ -34,21 +34,38 @@ class SvanM2FlatCfg( LeggedRobotCfg ):
     class init_state( LeggedRobotCfg.init_state ):
         pos = [0.0, 0.0, 0.6] # x,y,z [m]
         default_joint_angles = { # = target angles [rad] when action = 0.0
-            'fr_abd_j': 0.1,   # [rad]
-            'fl_abd_j': 0.1,   # [rad]
-            'rr_abd_j': -0.1 ,  # [rad]
-            'rl_abd_j': -0.1,   # [rad]
+            'fr_abd_j': 0.0,   # [rad]
+            'fl_abd_j': 0.0,   # [rad]
+            'rr_abd_j': -0.0 ,  # [rad]
+            'rl_abd_j': -0.0,   # [rad]
 
-            'fr_hip_j':  0.8,   # [rad]
-            'fl_hip_j':  1., # [rad]
-            'rr_hip_j':  0.8,   # [rad]
-            'rl_hip_j':  1., # [rad]
+            'fr_hip_j':  0.0,   # [rad]
+            'fl_hip_j':  0., # [rad]
+            'rr_hip_j':  0.0,   # [rad]
+            'rl_hip_j':  0., # [rad]
                         
-            'fr_knee_j':-1.5,  # [rad]
-            'fl_knee_j':-1.5,   # [rad]
-            'rr_knee_j':-1.5, # [rad]
-            'rl_knee_j':-1.5,   # [rad]            
+            'fr_knee_j':0.0,  # [rad]
+            'fl_knee_j':0.0,   # [rad]
+            'rr_knee_j':0.0, # [rad]
+            'rl_knee_j':0.0,   # [rad]            
         }
+
+        # default_joint_angles = { # = target angles [rad] when action = 0.0
+        #     'FL_hip_joint': 0.1,   # [rad]
+        #     'RL_hip_joint': 0.1,   # [rad]
+        #     'FR_hip_joint': -0.1 ,  # [rad]
+        #     'RR_hip_joint': -0.1,   # [rad]
+
+        #     'FL_thigh_joint': 0.8,     # [rad]
+        #     'RL_thigh_joint': 1.,   # [rad]
+        #     'FR_thigh_joint': 0.8,     # [rad]
+        #     'RR_thigh_joint': 1.,   # [rad]
+
+        #     'FL_calf_joint': -1.5,   # [rad]
+        #     'RL_calf_joint': -1.5,    # [rad]
+        #     'FR_calf_joint': -1.5,  # [rad]
+        #     'RR_calf_joint': -1.5,    # [rad]
+        # }
     
     class terrain( LeggedRobotCfg.terrain ):
         mesh_type = 'plane'
@@ -65,6 +82,8 @@ class SvanM2FlatCfg( LeggedRobotCfg ):
         # }     # [N*m*s/rad]
 
         
+        stiffness = {"j": 6}
+        damping = {'j': 0.5} 
         # action scale: target angle = actionScale * action + defaultAngle
         action_scale = 0.25
         # decimation: Number of control action updates @ sim DT per policy DT
@@ -74,9 +93,11 @@ class SvanM2FlatCfg( LeggedRobotCfg ):
         file = '{LEGGED_GYM_ROOT_DIR}/resources/robots/svan_m2/urdf/svan_urdf_package.urdf'
         name = "svan_m2"
         foot_name = "foot"
+        fix_base_link = False
         penalize_contacts_on = ["thigh", "calf"]
         terminate_after_contacts_on = ["base"]
-        self_collisions = 1 # 1 to disable, 0 to enable...bitwise filter
+        self_collisions = 0 # 1 to disable, 0 to enable...bitwise filter
+        flip_visual_attachments = False
   
     class rewards( LeggedRobotCfg.rewards ):
         soft_dof_pos_limit = 0.9
