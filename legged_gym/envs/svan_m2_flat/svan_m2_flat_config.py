@@ -33,39 +33,39 @@ from legged_gym.envs.base.legged_robot_config import LeggedRobotCfg, LeggedRobot
 class SvanM2FlatCfg( LeggedRobotCfg ):
     class init_state( LeggedRobotCfg.init_state ):
         pos = [0.0, 0.0, 0.6] # x,y,z [m]
-        default_joint_angles = { # = target angles [rad] when action = 0.0
-            'fr_abd_j': 0.0,   # [rad]
-            'fl_abd_j': 0.0,   # [rad]
-            'rr_abd_j': -0.0 ,  # [rad]
-            'rl_abd_j': -0.0,   # [rad]
-
-            'fr_hip_j':  0.0,   # [rad]
-            'fl_hip_j':  0., # [rad]
-            'rr_hip_j':  0.0,   # [rad]
-            'rl_hip_j':  0., # [rad]
-                        
-            'fr_knee_j':0.0,  # [rad]
-            'fl_knee_j':0.0,   # [rad]
-            'rr_knee_j':0.0, # [rad]
-            'rl_knee_j':0.0,   # [rad]            
-        }
-
         # default_joint_angles = { # = target angles [rad] when action = 0.0
-        #     'FL_hip_joint': 0.1,   # [rad]
-        #     'RL_hip_joint': 0.1,   # [rad]
-        #     'FR_hip_joint': -0.1 ,  # [rad]
-        #     'RR_hip_joint': -0.1,   # [rad]
+        #     'fr_abd_j': 0.0,   # [rad]
+        #     'fl_abd_j': 0.0,   # [rad]
+        #     'rr_abd_j': -0.0 ,  # [rad]
+        #     'rl_abd_j': -0.0,   # [rad]
 
-        #     'FL_thigh_joint': 0.8,     # [rad]
-        #     'RL_thigh_joint': 1.,   # [rad]
-        #     'FR_thigh_joint': 0.8,     # [rad]
-        #     'RR_thigh_joint': 1.,   # [rad]
-
-        #     'FL_calf_joint': -1.5,   # [rad]
-        #     'RL_calf_joint': -1.5,    # [rad]
-        #     'FR_calf_joint': -1.5,  # [rad]
-        #     'RR_calf_joint': -1.5,    # [rad]
+        #     'fr_hip_j':  0.0,   # [rad]
+        #     'fl_hip_j':  0., # [rad]
+        #     'rr_hip_j':  0.0,   # [rad]
+        #     'rl_hip_j':  0., # [rad]
+                        
+        #     'fr_knee_j':0.0,  # [rad]
+        #     'fl_knee_j':0.0,   # [rad]
+        #     'rr_knee_j':0.0, # [rad]
+        #     'rl_knee_j':0.0,   # [rad]            
         # }
+
+        default_joint_angles = { # = target angles [rad] when action = 0.0
+            'FL_hip_joint': 0.1,   # [rad]
+            'RL_hip_joint': 0.1,   # [rad]
+            'FR_hip_joint': -0.1 ,  # [rad]
+            'RR_hip_joint': -0.1,   # [rad]
+
+            'FL_thigh_joint': 0.8,     # [rad]
+            'RL_thigh_joint': 1.,   # [rad]
+            'FR_thigh_joint': 0.8,     # [rad]
+            'RR_thigh_joint': 1.,   # [rad]
+
+            'FL_calf_joint': -1.5,   # [rad]
+            'RL_calf_joint': -1.5,    # [rad]
+            'FR_calf_joint': -1.5,  # [rad]
+            'RR_calf_joint': -1.5,    # [rad]
+        }
     
     class terrain( LeggedRobotCfg.terrain ):
         mesh_type = 'plane'
@@ -74,15 +74,15 @@ class SvanM2FlatCfg( LeggedRobotCfg ):
     class control( LeggedRobotCfg.control ):
         # PD Drive parameters:
         control_type = 'P'
-        # stiffness = {'fr_abd_j': 400, 'fr_hip_j': 90, 'fr_knee_j': 12.415, 'fl_abd_j': 400, 'fl_hip_j': 90, 'fl_knee_j': 12.415,
-        #             'rr_abd_j': 400, 'rr_hip_j': 90, 'rr_knee_j': 12.415, 'rl_abd_j': 400, 'rl_hip_j': 90, 'rl_knee_j': 12.415,
+        # stiffness = {'fr_abd_j': 80, 'fr_hip_j': 40, 'fr_knee_j': 20.415, 'fl_abd_j': 80, 'fl_hip_j': 40, 'fl_knee_j': 20,
+        #             'rr_abd_j': 80, 'rr_hip_j': 40, 'rr_knee_j': 20, 'rl_abd_j': 80, 'rl_hip_j': 40, 'rl_knee_j': 20,
         # }  # [N*m/rad]
-        # damping = {'fr_abd_j': 1, 'fr_hip_j': 1.5, 'fr_knee_j': 0.5, 'fl_abd_j': 1, 'fl_hip_j': 1.5, 'fl_knee_j': 0.5,
-        #             'rr_abd_j': 1, 'rr_hip_j': 1.5, 'rr_knee_j': 0.5, 'rl_abd_j': 1, 'rl_hip_j': 1.5, 'rl_knee_j': 0.5,
+        # damping = {'fr_abd_j': 2, 'fr_hip_j': 2.5, 'fr_knee_j': 1, 'fl_abd_j': 2, 'fl_hip_j': 2.5, 'fl_knee_j': 1,
+        #             'rr_abd_j': 2, 'rr_hip_j': 2.5, 'rr_knee_j': 1, 'rl_abd_j': 2, 'rl_hip_j': 2.5, 'rl_knee_j': 1,
         # }     # [N*m*s/rad]
 
         
-        stiffness = {"j": 6}
+        stiffness = {"j": 2}
         damping = {'j': 0.5} 
         # action scale: target angle = actionScale * action + defaultAngle
         action_scale = 0.25

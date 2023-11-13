@@ -4,7 +4,21 @@
      For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
 <robot
   name="svan_urdf_package">
-  <link name="base_link">
+  <link name="base">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+  </link> 
+  <joint name="floating_base" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="base"/>
+    <child link="trunk"/>
+  </joint>
+
+  <link name="trunk">
     <inertial>
       <origin
         xyz="-0.000736126189085237 -1.72251877519347E-05 9.8768329506848E-05"
@@ -43,7 +57,7 @@
       </geometry>
     </collision>
   </link>
-  <link name="fr_abd_l">
+  <link name="FR_hip">
     <inertial>
       <origin
         xyz="0.0431354666865266 -0.0619037967425595 -1.28783333823018E-05"
@@ -82,14 +96,14 @@
       </geometry>
     </collision>
   </link>
-  <joint name="fr_abd_j" type="revolute">
+  <joint name="FR_hip_joint" type="revolute">
     <origin
       xyz="0.20368 -0.06 0"
       rpy="0 0 0" />
     <parent
-      link="base_link" />
+      link="trunk" />
     <child
-      link="fr_abd_l" />
+      link="FR_hip" />
     <axis
       xyz="1 0 0" />
     <limit
@@ -98,7 +112,7 @@
       effort="100"
       velocity="100" />
   </joint>
-  <link name="fr_hip_l">
+  <link name="FR_thigh">
     <inertial>
       <origin
         xyz="0.00165916788705489 0.00999999412640479 -0.0713157899491978"
@@ -137,14 +151,14 @@
       </geometry>
     </collision>
   </link>
-  <joint name="fr_hip_j" type="revolute">
+  <joint name="FR_thigh_joint" type="revolute">
     <origin
       xyz="0.043 -0.07525 0"
       rpy="0 0 0" />
     <parent
-      link="fr_abd_l" />
+      link="FR_hip" />
     <child
-      link="fr_hip_l" />
+      link="FR_thigh" />
     <axis
       xyz="0 1 0" />
     <limit
@@ -153,7 +167,7 @@
       effort="100"
       velocity="100" />
   </joint>
-  <link name="fr_knee_l">
+  <link name="FR_calf">
     <inertial>
       <origin
         xyz="0.00288556341815482 1.5445513158463E-06 -0.0756253134355262"
@@ -192,14 +206,14 @@
       </geometry>
     </collision>
   </link>
-  <joint name="fr_knee_j" type="revolute">
+  <joint name="FR_calf_joint" type="revolute">
     <origin
       xyz="0.0041389 0.01 -0.16494"
       rpy="0 0 0" />
     <parent
-      link="fr_hip_l" />
+      link="FR_thigh" />
     <child
-      link="fr_knee_l" />
+      link="FR_calf" />
     <axis
       xyz="0 1 0" />
     <limit
@@ -208,16 +222,16 @@
       effort="100"
       velocity="100" />
   </joint>
-  <joint name="fr_dummy_j" type="fixed" >
+  <joint name="FR_foot_fixed" type="fixed" >
     <origin
       xyz="-0.026457 0 -0.16693"
       rpy="0 0 0" />
     <parent
-      link="fr_knee_l" />
+      link="FR_calf" />
     <child
-      link="foot_FR" />
+      link="FR_foot" />
   </joint>
-  <link name="fl_abd_l">
+  <link name="FL_hip">
     <inertial>
       <origin
         xyz="0.0431354666865253 0.0619037967425567 1.28783333771046E-05"
@@ -256,14 +270,14 @@
       </geometry>
     </collision>
   </link>
-  <joint name="fl_abd_j" type="revolute">
+  <joint name="FL_hip_joint" type="revolute">
     <origin
       xyz="0.20368 0.06 0"
       rpy="0 0 0" />
     <parent
-      link="base_link" />
+      link="trunk" />
     <child
-      link="fl_abd_l" />
+      link="FL_hip" />
     <axis
       xyz="1 0 0" />
     <limit
@@ -272,7 +286,7 @@
       effort="100"
       velocity="100" />
   </joint>
-  <link name="fl_hip_l">
+  <link name="FL_thigh">
     <inertial>
       <origin
         xyz="0.0016591678870552 -0.0100000058735955 -0.0713157899491955"
@@ -311,14 +325,14 @@
       </geometry>
     </collision>
   </link>
-  <joint name="fl_hip_j" type="revolute">
+  <joint name="FL_thigh_joint" type="revolute">
     <origin
       xyz="0.043 0.07525 0"
       rpy="0 0 0" />
     <parent
-      link="fl_abd_l" />
+      link="FL_hip" />
     <child
-      link="fl_hip_l" />
+      link="FL_thigh" />
     <axis
       xyz="0 1 0" />
     <limit
@@ -366,12 +380,12 @@
       </geometry>
     </collision>
   </link>
-  <joint name="fl_knee_j" type="revolute">
+  <joint name="FL_calf_joint" type="revolute">
     <origin
       xyz="0.0041389 -0.01 -0.16494"
       rpy="0 0 0" />
     <parent
-      link="fl_hip_l" />
+      link="FL_thigh" />
     <child
       link="fl_knee_a" />
     <axis
@@ -382,16 +396,16 @@
       effort="100"
       velocity="100" />
   </joint>
-  <joint name="fl_dummy_j" type="fixed" >
+  <joint name="FL_foot_fixed" type="fixed" >
     <origin
       xyz="-0.026618 0 -0.16693"
       rpy="0 0 0" />
     <parent
       link="fl_knee_a" />
     <child
-      link="foot_FL" />
+      link="FL_foot" />
   </joint>
-  <link name="rr_abd_l">
+  <link name="RR_hip">
     <inertial>
       <origin
         xyz="-0.0408339071979818 -0.0619037967425603 0.000179250427446827"
@@ -430,14 +444,14 @@
       </geometry>
     </collision>
   </link>
-  <joint name="rr_abd_j" type="revolute">
+  <joint name="RR_hip_joint" type="revolute">
     <origin
       xyz="-0.20482 -0.06 0"
       rpy="0 0 0" />
     <parent
-      link="base_link" />
+      link="trunk" />
     <child
-      link="rr_abd_l" />
+      link="RR_hip" />
     <axis
       xyz="1 0 0" />
     <limit
@@ -446,7 +460,7 @@
       effort="100"
       velocity="100" />
   </joint>
-  <link name="rr_hip_l">
+  <link name="RR_thigh">
     <inertial>
       <origin
         xyz="-0.00165916788705478 0.0100000058735978 -0.0713157899491982"
@@ -485,14 +499,14 @@
       </geometry>
     </collision>
   </link>
-  <joint name="rr_hip_j" type="revolute">
+  <joint name="RR_thigh_joint" type="revolute">
     <origin
       xyz="-0.043 -0.07525 0"
       rpy="0 0 0" />
     <parent
-      link="rr_abd_l" />
+      link="RR_hip" />
     <child
-      link="rr_hip_l" />
+      link="RR_thigh" />
     <axis
       xyz="0 1 0" />
     <limit
@@ -501,7 +515,7 @@
       effort="100"
       velocity="100" />
   </joint>
-  <link name="rr_knee_l">
+  <link name="RR_calf">
     <inertial>
       <origin
         xyz="0.00654595759568111 1.5446183047052E-06 -0.0753966327483542"
@@ -540,14 +554,14 @@
       </geometry>
     </collision>
   </link>
-  <joint name="rr_knee_j" type="revolute">
+  <joint name="RR_calf_joint" type="revolute">
     <origin
       xyz="-0.0038618 0.01 -0.16493"
       rpy="0 0 0" />
     <parent
-      link="rr_hip_l" />
+      link="RR_thigh" />
     <child
-      link="rr_knee_l" />
+      link="RR_calf" />
     <axis
       xyz="0 1 0" />
     <limit
@@ -596,16 +610,16 @@
       </geometry>
     </collision>
   </link> -->
-  <joint name="rr_dummy_j" type="fixed" >
+  <joint name="RR_foot_fixed" type="fixed" >
     <origin
       xyz="-0.018339 0 -0.16802"
       rpy="0 0 0" />
     <parent
-      link="rr_knee_l" />
+      link="RR_calf" />
     <child
-      link="foot_RR" />
+      link="RR_foot" />
   </joint>
-  <link name="rl_abd_l">
+  <link name="RL_hip">
     <inertial>
       <origin
         xyz="-0.0408339071979842 0.0619037967425569 -0.000179250427450348"
@@ -644,14 +658,14 @@
       </geometry>
     </collision>
   </link>
-  <joint name="rl_abd_j" type="revolute">
+  <joint name="RL_hip_joint" type="revolute">
     <origin
       xyz="-0.20482 0.06 0"
       rpy="0 0 0" />
     <parent
-      link="base_link" />
+      link="trunk" />
     <child
-      link="rl_abd_l" />
+      link="RL_hip" />
     <axis
       xyz="1 0 0" />
     <limit
@@ -660,7 +674,7 @@
       effort="100"
       velocity="100" />
   </joint>
-  <link name="rl_hip_l">
+  <link name="RL_thigh">
     <inertial>
       <origin
         xyz="-0.00179950691259256 -0.0100000058735954 -0.0713123896470731"
@@ -699,14 +713,14 @@
       </geometry>
     </collision>
   </link>
-  <joint name="rl_hip_j" type="revolute">
+  <joint name="RL_thigh_joint" type="revolute">
     <origin
       xyz="-0.043 0.07525 0"
       rpy="0 0 0" />
     <parent
-      link="rl_abd_l" />
+      link="RL_hip" />
     <child
-      link="rl_hip_l" />
+      link="RL_thigh" />
     <axis
       xyz="0 1 0" />
     <limit
@@ -715,7 +729,7 @@
       effort="100"
       velocity="100" />
   </joint>
-  <link name="rl_knee_l">
+  <link name="RL_calf">
     <inertial>
       <origin
         xyz="0.00654594639576345 1.54461741741496E-06 -0.0753966803284335"
@@ -754,14 +768,14 @@
       </geometry>
     </collision>
   </link>
-  <joint name="rl_knee_j" type="revolute">
+  <joint name="RL_calf_joint" type="revolute">
     <origin
       xyz="-0.0038618 -0.01 -0.16493"
       rpy="0 0 0" />
     <parent
-      link="rl_hip_l" />
+      link="RL_thigh" />
     <child
-      link="rl_knee_l" />
+      link="RL_calf" />
     <axis
       xyz="0 1 0" />
     <limit
@@ -810,7 +824,7 @@
       </geometry>
     </collision>
   </link> -->
-  <link name="foot_FR">
+  <link name="FR_foot">
     <inertial>
         <origin xyz="0.0014979844072685 1.99840144432528E-15 7.77349055681165E-05"
         rpy="0 0 0" /> 
@@ -830,7 +844,7 @@
         </geometry>
       </collision>
   </link>
-  <link name="foot_FL">
+  <link name="FL_foot">
     <inertial>
         <origin xyz="0.0014979844072685 1.99840144432528E-15 7.77349055681165E-05"
         rpy="0 0 0" /> 
@@ -850,7 +864,7 @@
         </geometry>
       </collision>
   </link>
-  <link name="foot_RL">
+  <link name="RL_foot">
     <inertial>
         <origin xyz="0.0014979844072685 1.99840144432528E-15 7.77349055681165E-05"
         rpy="0 0 0" /> 
@@ -870,7 +884,7 @@
         </geometry>
       </collision>
   </link>
-  <link name="foot_RR">
+  <link name="RR_foot">
     <inertial>
         <origin xyz="0.0014979844072685 1.99840144432528E-15 7.77349055681165E-05"
         rpy="0 0 0" /> 
@@ -890,13 +904,13 @@
         </geometry>
       </collision>
   </link>
-  <joint name="rl_dummy_j" type="fixed" >
+  <joint name="RL_foot_fixed" type="fixed" >
     <origin
       xyz="-0.0185 0 -0.16802"
       rpy="0 0 0" />
     <parent
-      link="rl_knee_l" />
+      link="RL_calf" />
     <child
-      link="foot_RL" />
+      link="RL_foot" />
   </joint>
 </robot>
