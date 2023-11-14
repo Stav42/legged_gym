@@ -17,7 +17,6 @@
     <parent link="base"/>
     <child link="trunk"/>
   </joint>
-
   <link name="trunk">
     <inertial>
       <origin
@@ -106,11 +105,12 @@
       link="FR_hip" />
     <axis
       xyz="1 0 0" />
+    <dynamics damping="0" friction="0"/>
     <limit
-      lower="-3"
-      upper="3"
-      effort="100"
-      velocity="100" />
+      lower="-0.8"
+      upper="0.8"
+      effort="20"
+      velocity="52.4" />
   </joint>
   <link name="FR_thigh">
     <inertial>
@@ -161,11 +161,8 @@
       link="FR_thigh" />
     <axis
       xyz="0 1 0" />
-    <limit
-      lower="-3"
-      upper="3"
-      effort="100"
-      velocity="100" />
+    <dynamics friction="0" damping="0"/>
+    <limit effort="55" lower="-1.0471975512" upper="4.18879020479" velocity="28.6"/>
   </joint>
   <link name="FR_calf">
     <inertial>
@@ -216,13 +213,10 @@
       link="FR_calf" />
     <axis
       xyz="0 1 0" />
-    <limit
-      lower="-3"
-      upper="3"
-      effort="100"
-      velocity="100" />
+    <dynamics damping="0" friction="0"/>
+    <limit effort="55" lower="-2.69653369433" upper="-0.916297857297" velocity="28.6"/>
   </joint>
-  <joint name="FR_foot_fixed" type="fixed" >
+  <joint name="FR_foot_fixed" type="fixed" dont_collapse="true">
     <origin
       xyz="-0.026457 0 -0.16693"
       rpy="0 0 0" />
@@ -280,12 +274,9 @@
       link="FL_hip" />
     <axis
       xyz="1 0 0" />
-    <limit
-      lower="-3"
-      upper="3"
-      effort="100"
-      velocity="100" />
-  </joint>
+    <dynamics damping="0" friction="0"/>
+    <limit effort="20" lower="-0.802851455917" upper="0.802851455917" velocity="52.4"/>
+    </joint>
   <link name="FL_thigh">
     <inertial>
       <origin
@@ -335,13 +326,10 @@
       link="FL_thigh" />
     <axis
       xyz="0 1 0" />
-    <limit
-      lower="-3"
-      upper="3"
-      effort="100"
-      velocity="100" />
+    <dynamics damping="0" friction="0"/>
+    <limit effort="55" lower="-1.0471975512" upper="4.18879020479" velocity="28.6"/>
   </joint>
-  <link name="fl_knee_a">
+  <link name="FL_calf">
     <inertial>
       <origin
         xyz="0.00288556341815421 1.54455131551323E-06 -0.0756253134355257"
@@ -387,21 +375,18 @@
     <parent
       link="FL_thigh" />
     <child
-      link="fl_knee_a" />
+      link="FL_calf" />
     <axis
       xyz="0 1 0" />
-    <limit
-      lower="-3"
-      upper="3"
-      effort="100"
-      velocity="100" />
+    <dynamics damping="0" friction="0"/>
+    <limit effort="55" lower="-2.69653369433" upper="-0.916297857297" velocity="28.6"/>
   </joint>
-  <joint name="FL_foot_fixed" type="fixed" >
+  <joint name="FL_foot_fixed" type="fixed" dont_collapse="true">
     <origin
       xyz="-0.026618 0 -0.16693"
       rpy="0 0 0" />
     <parent
-      link="fl_knee_a" />
+      link="FL_calf" />
     <child
       link="FL_foot" />
   </joint>
@@ -454,11 +439,8 @@
       link="RR_hip" />
     <axis
       xyz="1 0 0" />
-    <limit
-      lower="-3"
-      upper="3"
-      effort="100"
-      velocity="100" />
+    <dynamics damping="0" friction="0"/>
+    <limit effort="20" lower="-0.802851455917" upper="0.802851455917" velocity="52.4"/>
   </joint>
   <link name="RR_thigh">
     <inertial>
@@ -509,11 +491,8 @@
       link="RR_thigh" />
     <axis
       xyz="0 1 0" />
-    <limit
-      lower="-3"
-      upper="3"
-      effort="100"
-      velocity="100" />
+    <dynamics damping="0" friction="0"/>
+    <limit effort="55" lower="-1.0471975512" upper="4.18879020479" velocity="28.6"/>
   </joint>
   <link name="RR_calf">
     <inertial>
@@ -564,11 +543,8 @@
       link="RR_calf" />
     <axis
       xyz="0 1 0" />
-    <limit
-      lower="-3"
-      upper="3"
-      effort="100"
-      velocity="100" />
+    <dynamics damping="0" friction="0"/>
+    <limit effort="55" lower="-2.69653369433" upper="-0.916297857297" velocity="28.6"/>
   </joint>
   <!-- <link
     name="rr_dummy_l">
@@ -610,7 +586,7 @@
       </geometry>
     </collision>
   </link> -->
-  <joint name="RR_foot_fixed" type="fixed" >
+  <joint name="RR_foot_fixed" type="fixed" dont_collapse="true">
     <origin
       xyz="-0.018339 0 -0.16802"
       rpy="0 0 0" />
@@ -668,11 +644,8 @@
       link="RL_hip" />
     <axis
       xyz="1 0 0" />
-    <limit
-      lower="-3"
-      upper="3"
-      effort="100"
-      velocity="100" />
+    <dynamics damping="0" friction="0"/>
+    <limit effort="20" lower="-0.802851455917" upper="0.802851455917" velocity="52.4"/>
   </joint>
   <link name="RL_thigh">
     <inertial>
@@ -723,11 +696,8 @@
       link="RL_thigh" />
     <axis
       xyz="0 1 0" />
-    <limit
-      lower="-3"
-      upper="3"
-      effort="100"
-      velocity="100" />
+    <dynamics damping="0" friction="0"/>
+    <limit effort="55" lower="-1.0471975512" upper="4.18879020479" velocity="28.6"/>
   </joint>
   <link name="RL_calf">
     <inertial>
@@ -778,11 +748,8 @@
       link="RL_calf" />
     <axis
       xyz="0 1 0" />
-    <limit
-      lower="-3"
-      upper="3"
-      effort="100"
-      velocity="100" />
+    <dynamics damping="0" friction="0"/>
+    <limit effort="55" lower="-2.69653369433" upper="-0.916297857297" velocity="28.6"/>
   </joint>
   <!-- <link
     name="rl_dummy_l">
@@ -904,7 +871,7 @@
         </geometry>
       </collision>
   </link>
-  <joint name="RL_foot_fixed" type="fixed" >
+  <joint name="RL_foot_fixed" type="fixed" dont_collapse="true" >
     <origin
       xyz="-0.0185 0 -0.16802"
       rpy="0 0 0" />
